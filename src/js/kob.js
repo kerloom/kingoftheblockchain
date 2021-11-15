@@ -1,15 +1,4 @@
 const config = {
-    'LCL': {
-        id: 5777,
-        type: 'private',
-        contract: '0xdB04A6E0f75c815B142E0b8D3710925261B2a784',
-        provider: 'http://localhost:9545',
-        currency: 'ETH',
-        name: 'localhost',
-        charities: {
-            '0x735BCdB848505D0F12E6c0FCBC832B3897C9F3E8': 'Charity 9',
-        },
-    },
     'ROP': {
         id: 3,
         type: 'ropsten',
@@ -22,7 +11,18 @@ const config = {
             '0x629ccb33ad566d084366c592e70E60a0aCFE6449': 'Danir Charity',
             '0x5C85babA0A81DE6b2C324f0486e3497Bd2f51681': 'PP Charity',
         }
-    }
+    },
+    // 'LCL': {
+    //     id: 5777,
+    //     type: 'private',
+    //     contract: '0xdB04A6E0f75c815B142E0b8D3710925261B2a784',
+    //     provider: 'http://localhost:9545',
+    //     currency: 'ETH',
+    //     name: 'localhost',
+    //     charities: {
+    //         '0x735BCdB848505D0F12E6c0FCBC832B3897C9F3E8': 'Charity 9',
+    //     },
+    // },
 }
 
 let chain = window.localStorage.getItem('chain') || Object.keys(config)[0];
