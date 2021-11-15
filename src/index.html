@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>King of the Blockchain</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body  x-data="chainData()">
+
+    <div class="container">
+      <div class="navigation container">
+        <div class="row">
+          <div class="col col-xs-5 col-md-10 v-align-center">
+            <img height="30px" src="images/prize-0.svg">
+            <span class="hide-mobile">King of the Blockchain</span>
+          </div>
+          <div class="col col-xs-7 col-md-2">
+            <select id="charity" x-model="chain" x-effect="changeChain(chain)">
+              <template x-for="configChain in Object.keys(config)">
+                <option
+                  x-text="config[configChain].name"
+                  :value="configChain"
+                  :selected="configChain == chain"
+                ></option>
+              </template>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="leaderboard" x-data="getTopBids()">
+        <div class="row">
+          <div class="col col-xs-12 margin-bottom">
+            <label for="message"><span>Message</span></label>
+            <input id="message" type="text" x-model="newBid.message" />
+          </div>
+        </div>
+        <div class="row v-align-end">
+          <div class="col col-xs-12 col-lg-4 margin-bottom">
+              <label for="uri"><span>Image URL</span></label>
+              <input id="uri" type="text" x-model="newBid.uri" />
+          </div>
+          <div class="col col-xs-12 col-lg-4 margin-bottom">
+            <label for="charity"><span>Donate to Charity</span></label>
+            <span x-text="config[chain][charities]"></span>
+            <select id="charity" x-model="newBid.charity">
+              <template x-for="(charity, idx) in charities">
+                <option
+                  x-text="config[chain].charities[charity] || charity"
+                  :value="idx"
+                ></option>
+              </template>
+            </select>
+          </div>
+          <div class="col col-xs-6 col-lg-2 margin-bottom">
+            <label for="bid"><span x-text="`Bid (${config[chain].currency})`">Bid</span></label>
+            <input id="bid" type="number" x-model="newBid.bid" />
+          </div>
+          <div class="col col-xs-6 col-lg-2 margin-bottom align-items-end">
+              <button
+                @click="makeBid(newBid.bid, newBid.message, newBid.uri, newBid.charity)"
+                :disabled="maxBid >= toWei(newBid.bid)"
+              >
+                Submit Bid
+              </button>
+          </div>
+        </div>
+
+        <div x-show="message.show" :class="message.type">
+          <p x-text="message.text"></p>
+        </div>
+
+        <div class="leaderboard">
+          <template x-for="(bid, idx) in topBids">
+            <div :class="'container bidNum' + idx">
+              <img
+                x-show="idx !== 0"
+                :src="'images/prize-' + (idx + 1) + '.png'"
+              />
+              <img x-show="idx === 0" src="images/prize-0.svg" />
+              <div class="row">
+                <div class="bidContainer v-align-center">
+                  <div class="col col-xs-12 col-md-3">
+                      <img
+                      :src="bid.uri"
+                      onerror="this.src='images/icon-placeholder.jpeg'"
+                    />
+                  </div>
+                  <div class="col col-xs-12 col-md-9">
+                    <p x-text="bid.message"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row bidFooter">
+                <div class="col col-xs-12 col-md-4">
+                  <p class="dim" x-text="date2String(bid.timestamp)"></p>
+                </div>
+                <div class="col col-xs-12 col-md-4">
+                  <p class="dim" x-text="bid.bidder.slice(0,6) + '...' + bid.bidder.slice(bid.bidder.length-4,bid.bidder.length)"></p>
+                </div>
+                <div class="col col-xs-12 col-md-4">
+                  <p
+                  class="amount"
+                  x-text="web3.utils.fromWei(bid.bid, 'ether') + ' ETH'"
+                  ></p>
+              </div>
+              </div>
+            </div>
+          </template>
+          <div class="warning" x-show="isConnected && topBids.length === 0">No bids yet. You are the first one here!</div>
+          <div class="warning" x-show="!isConnected">
+            <p>Your wallet is not connected to the correct network</p>
+            <p>Please connect to the <span x-text="config[chain].name"></span> network and refresh</p>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
+
+    <script src="js/web3.min.js"></script>
+    <script src="js/kob.js"></script>
+  </body>
+</html>

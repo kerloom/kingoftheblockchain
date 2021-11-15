@@ -1,0 +1,270 @@
+body {
+    background: #112;
+    color: ivory;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+.navigation {
+  padding-top: 24px;
+  margin-bottom: 32px;
+  font-size: large;
+}
+
+.navigation img {
+  margin-right: 1rem;
+}
+
+.navigation select {
+  border: 0px;
+  height: 32px;
+  font-size: large;
+  padding: 0 8px;
+}
+
+.v-align-end,
+.v-align-center {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.v-align-end {
+  align-items: flex-end;
+}
+.v-align-center {
+  align-items: center;
+}
+
+.pad {
+  padding: 0 12px;
+}
+
+.margin-bottom {
+  margin-bottom: 12px;
+}
+
+.bidContainer {
+    padding: 1.6rem;
+}
+
+.leaderboard {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bidContainer img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.bidContainer p {
+    font-size: xx-large;
+    margin-top: 1rem;
+}
+
+/* .bidFooter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0rem 1.6rem;
+} */
+
+.dim{
+    color: #888;
+}
+
+.amount {
+    font-size: larger;
+    color:darkorange;
+    font-weight: bold;
+}
+
+.bidNum0 {
+    background: #334;
+    width: 100%;
+    border-radius: 1rem;
+    margin: .8rem 0;
+    position: relative;
+    margin-top: 60px;
+}
+
+.bidNum0 > img {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: -60px;
+    left: -40px;
+    transform: rotate(-20deg);
+    z-index: 5;
+}
+
+.bidNum0 .bidContainer {
+  min-height: 360px;
+  width: auto;
+}
+
+.bidNum1 {
+    background: #334;
+    border-radius: 1rem;
+    margin: 3.2rem 0 1.2rem;
+    width: 95%;
+    position: relative;
+}
+
+.bidNum1 > img,
+.bidNum2 > img {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: -10px;
+    left: -15px;
+    z-index: 5;
+}
+
+.bidNum1 .bidContainer {
+  min-height: 260px;
+}
+.bidNum2 .bidContainer {
+    min-height: 200px;
+}
+
+.bidNum1 .bidContainer p,
+.bidNum2 .bidContainer p {
+    font-size: x-large;
+}
+
+.bidNum2 {
+    background: #334;
+    border-radius: 1rem;
+    margin: .8rem 0;
+    width: 95%;
+    position:relative;
+}
+
+.warning,
+.success,
+.error {
+  font-size: large;
+  border: 1px solid orange;
+  padding: 12px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.success {
+  border-color: limegreen;
+  margin: auto;
+}
+.error {
+  border-color: #B33;
+  margin: auto;
+}
+
+/* Input Fields */
+
+
+    select,
+    input {
+        width: 100%;
+        border: 1px solid #88B;
+        background: #112;
+        transition: background 0.3s ease;
+        border-radius: 6px;
+        height: 48px;
+        color: ivory;
+        font-size: larger;
+        padding: 0 8px;
+    }
+    select:focus,
+    input:focus {
+        background: #334;
+    }
+
+    button {
+        cursor: pointer;
+        height: 48px;
+        border-radius: 6px;
+        background: #112;
+        box-shadow: #66A 0px 2px 0px 1px;
+        color: ivory;
+    }
+    button:hover {
+        background: #334;
+    }
+    button:disabled {
+        cursor: default;
+        background: #112;
+        color: #778;
+        box-shadow:none;
+    }
+
+@media only screen and (max-width: 768px) {
+
+  .leaderboard {
+    padding: 2rem 1rem;
+  }
+
+  .hide-mobile {
+    display: none;
+  }
+
+  .bidContainer p {
+    font-size: x-large;
+  }
+  .bidNum1 .bidContainer p,
+  .bidNum2 .bidContainer p {
+      font-size: larger;
+  }
+
+  .bidNum1 > img,
+  .bidNum2 > img {
+    height: 40px;
+    width: 40px;
+    top: -8px;
+    left: -12px;
+  }
+  .bidNum0 > img {
+    height: 75px;
+    width: 75px;
+    top: -45px;
+    left: -30px;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+  .leaderboard {
+    padding: 2rem 0rem;
+  }
+
+  .bidContainer p {
+    font-size: large;
+  }
+  .bidNum1 .bidContainer p,
+  .bidNum2 .bidContainer p {
+      font-size:medium;
+  }
+
+  .bidNum1 > img,
+  .bidNum2 > img {
+    height: 40px;
+    width: 40px;
+    top: -8px;
+    left: -12px;
+  }
+  .bidNum0 > img {
+    height: 65px;
+    width: 65px;
+    top: -40px;
+    left: -25px;
+  }
+  .bidFooter p {
+    margin: 0 0 1rem;
+  }
+  .dim {
+    width: 100%;
+  }
+}

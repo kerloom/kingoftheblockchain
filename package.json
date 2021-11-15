@@ -1,0 +1,23 @@
+{
+  "name": "king-of-the-blockchain",
+  "version": "1.0.0",
+  "description": "Become the King of the Blockchain by beating everyone and bidding higher to donate to charity",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@leanadmin/alpine-typescript": "^0.1.25",
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.6.0",
+    "dotenv": "^10.0.0"
+  }
+}
