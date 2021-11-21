@@ -16,6 +16,18 @@ module.exports = {
       },
       network_id: 3
     },
+    bsc: {
+      provider: function () {
+        return new HDWalletProvider(process.env.WALLET_KEY,  'https://bsc-dataseed.binance.org');
+      },
+      network_id: 56
+    },
+    bsc_test: {
+      provider: function () {
+        return new HDWalletProvider(process.env.WALLET_KEY,  'https://data-seed-prebsc-1-s1.binance.org:8545');
+      },
+      network_id: 97
+    },
     develop: {
       port: 8545
     }

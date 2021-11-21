@@ -1,4 +1,26 @@
 const config = {
+    'bsc': {
+        id: 56,
+        type: 'private',
+        contract: '0xa55cE4998dB9AAB00F7480405CbE2227C6b0d4e4',
+        provider: 'https://bsc-dataseed.binance.org',
+        currency: 'BNB',
+        name: 'Binance SC',
+        charities: {
+            '0xFa25FE8b362E8f6E51618fAD7a72e349ed9eDF64': 'KOB Charity',
+        }
+    },
+    'bsc_test': {
+        id: 97,
+        type: 'private',
+        contract: '0xa55cE4998dB9AAB00F7480405CbE2227C6b0d4e4',
+        provider: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+        currency: 'BNB',
+        name: 'BSC Testnet',
+        charities: {
+            '0x70E3E494D5C1f12334aC27BAeF34Fb8D7A8405aD': 'KOB Charity',
+        }
+    },
     'ROP': {
         id: 3,
         type: 'ropsten',
@@ -7,7 +29,7 @@ const config = {
         currency: 'ETH',
         name: 'Ropsten',
         charities: {
-            '0x70E3E494D5C1f12334aC27BAeF34Fb8D7A8405aD': 'Cuaras Charity',
+            '0x70E3E494D5C1f12334aC27BAeF34Fb8D7A8405aD': 'KOB Charity',
             '0x629ccb33ad566d084366c592e70E60a0aCFE6449': 'Danir Charity',
             '0x5C85babA0A81DE6b2C324f0486e3497Bd2f51681': 'PP Charity',
         }
