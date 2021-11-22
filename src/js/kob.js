@@ -67,6 +67,10 @@ function date2String(date) {
 async function changeChain(newChain) {
     if(newChain !== chain) {
         await window.localStorage.setItem('chain', newChain);
+        await web3.currentProvider.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: `0x${config[newChain].id.toString(16)}` }]
+          })
         window.location.reload();
     }
 }
